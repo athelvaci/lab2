@@ -21,13 +21,21 @@ function addTask() {
     if (task.value) {
 
         // Add the item to the array:
-        tasks.push(task.value);
+        if(!isDuplicate(task.value)){
+             tasks.push(task.value);
+        }
+        
+       
 
         // Update the page:
+        
+        
         message = '<h2>To-Do</h2><ol>';
         for (var i = 0, count = tasks.length; i < count; i++) {
             message += '<li>' + tasks[i] + '</li>';
         }
+        
+        
         message += '</ol>';
         output.innerHTML = message;
 
@@ -44,3 +52,13 @@ function init() {
     document.getElementById('theForm').onsubmit = addTask;
 } // End of init() function.
 window.onload = init;
+
+function isDuplicate(task1){
+    var duplicate = false;
+    for(var i = 0; i< tasks.length; i++ ){
+        if(tasks[i]==task1){
+            duplicate=true;
+        }
+    }
+    return duplicate;
+}

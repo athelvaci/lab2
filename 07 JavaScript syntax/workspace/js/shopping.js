@@ -30,7 +30,13 @@ function calculate() {
 	console.log("total after tax: " + total);
 
 	// Factor in the discount:
-	total = total - discount;
+	if(quantity>100){
+		total=total- (2*discount)
+	}
+	else{
+			total = total - discount;
+	}
+
 	console.log("total after discount: " + total);
 
 	// Format the total to two decimal places:
